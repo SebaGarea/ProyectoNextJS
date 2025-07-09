@@ -36,12 +36,15 @@ export async function GET(request) {
 
     // Si viene una categoría, filtramos con normalización
     if (categoria) {
-      // Función para normalizar: minúsculas, sin tildes, sin espacios
+      // Función para normalizar: minúsculas, sin tildes, sin espacios (igual que frontend)
       const normalize = (str) => str
         .toLowerCase()
         .normalize("NFD")
+        .replace(/\p{Diacritic}/gu, "")
         .replace(/[\u0300-\u036f]/g, "")
         .replace(/\s+/g, "");
+
+      console.log('API PRODUCTS - categoria recibida:', categoria);
 
       // Traemos todos los productos y filtramos en memoria
       const snapshot = await getDocs(productsCollection);
@@ -52,9 +55,12 @@ export async function GET(request) {
           productoData.id = id;
           return productoData;
         })
-        .filter((producto) =>
-          producto.category && normalize(producto.category) === normalize(categoria)
-        );
+        .filter((producto) => {
+          const catProd = producto.category ? normalize(producto.category) : '';
+          const catParam = normalize(categoria);
+          console.log('Comparando:', catProd, catParam);
+          return catProd === catParam;
+        });
 
       return NextResponse.json({
         message: "Productos obtenidos con exito",

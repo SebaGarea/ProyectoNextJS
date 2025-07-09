@@ -10,8 +10,9 @@ function normalizar(str) {
     .replace(/\s+/g, "-");
 }
 
-export default async function ProductsByCategoryPage({ params }) {
-  const { cat } = params;
+export default async function ProductsByCategoryPage(props) {
+  const params = await props.params;
+  const cat = params?.cat || "";
   // Buscar productos por categoría normalizada
   const { payload: products, error, message } = await getProducts(cat);
 
