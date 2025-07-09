@@ -1,13 +1,8 @@
 export async function getProducts(categoria) {
   try {
-    // Construir URL absoluta para server components
-    const baseUrl = process.env.VERCEL_URL 
-      ? `https://${process.env.VERCEL_URL}` 
-      : 'http://localhost:3000';
-    
     const url = categoria
-      ? `${baseUrl}/api/products?categoria=${categoria}`
-      : `${baseUrl}/api/products`;
+      ? `http://localhost:3000/api/products?categoria=${categoria}`
+      : `http://localhost:3000/api/products`;
 
     const data = await fetch(url);
     const { payload: products } = await data.json();
