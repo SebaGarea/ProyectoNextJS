@@ -81,6 +81,7 @@ export async function GET(request) {
   }
 
   catch(error){
+    console.log('API PRODUCTS ERROR:', error);
     return NextResponse.json({
       message: "Error al obtener los productos",
       error: true,
