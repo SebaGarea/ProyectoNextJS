@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Hero = () => {
   return (
     <div
@@ -23,12 +25,16 @@ const Hero = () => {
             <button className="px-4 py-3 text-lg font-semibold text-black bg-gray-100 rounded hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-70">
               Solicita tu presupuesto
             </button>
-            <button className="px-6 py-3 text-lg font-semibold text-black bg-gray-100 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-70">
-              Explora nuestros proyectos
-            </button>
-            <button className="px-6 py-3 text-lg font-semibold text-black bg-gray-100 rounded hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-70">
-              Contáctanos
-            </button>
+            <Link href="/proyectos" legacyBehavior>
+              <a className="px-6 py-3 text-lg font-semibold text-black bg-gray-100 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-70 block rounded">
+                Explora nuestros proyectos
+              </a>
+            </Link>
+            <Link href="/nosotros" legacyBehavior>
+              <a className="px-6 py-3 text-lg font-semibold text-black bg-gray-100 rounded hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-70 block">
+                Contáctanos
+              </a>
+            </Link>
             <div className="ml-auto"></div>
           </div>
         </div>

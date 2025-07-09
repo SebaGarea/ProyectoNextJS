@@ -1,25 +1,14 @@
-import PageTitle from "@/components/PageTitle";
-import Link from "next/link";
+import { notFound } from "next/navigation";
+import ProductDetailsClient from "@/components/ProductDetailsClient";
 
 export default async function ProductDetailsPage({ params }) {
+  const { id } = params;
+  // Cambia esta URL por la de tu API real si es necesario
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/api/products?id=${id}`);
+  const result = await res.json();
+  const product = result.payload && result.payload.length > 0 ? result.payload[0] : null;
 
-    const { id } = await params
-    const data = await fetch(`https://dummyjson.com/products/${id}`)
-    const productDetail = await data.json()
+  if (!product) return notFound();
 
-    if(productDetail.message) {
-        return (
-            <>
-                <PageTitle>Producto no encontrado</PageTitle>
-                <p>El producto con id {id} no existe, intentalo de nuevo</p>
-                <Link href="/product">Volver a productos</Link>
-            </>
-        )
-    }
-
-    return (
-        <>
-            <PageTitle>Detalle del producto {id}</PageTitle>
-        </>
-    );
+  return <ProductDetailsClient product={product} />;
 }
