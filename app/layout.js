@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
         <AuthContextProvider>
           <CartProvider>
             <Header />
-            <main className="grow pb-4">{children}</main>
+            <main className="grow pb-20 mb-8">{children}</main>
             <Footer />
           </CartProvider>
         </AuthContextProvider>

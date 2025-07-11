@@ -3,6 +3,7 @@ import PageTitle from "@/components/PageTitle";
 import { useContext } from "react";
 import { CartContext } from "@/providers/CartProvider";
 import Image from "next/image";
+import Link from "next/link";
 
 function CarritoPage() {
   const { cart, removeFromCart, clearCart, increaseQuantity, decreaseQuantity } = useContext(CartContext);
@@ -29,12 +30,12 @@ function CarritoPage() {
               <>
                 <p className="text-gray-600 text-center">El carrito está vacío.</p>
                 <div className="flex justify-center mt-6">
-                  <a
+                  <Link
                     href="/products"
                     className="block rounded-sm bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600"
                   >
                     Volver a productos
-                  </a>
+                  </Link>
                 </div>
               </>
             ) : (
@@ -138,13 +139,13 @@ function CarritoPage() {
                         <dd>${total}</dd>
                       </div>
                     </dl>
-                    <div className="flex justify-end gap-6"> {/* gap-6 para aún más separación */}
-                      <a
+                    <div className="flex justify-end gap-6">
+                      <Link
                         href="/products"
                         className="inline-flex items-center justify-center rounded-full bg-gray-100 px-8 py-3 text-gray-900 border border-gray-300 hover:bg-gray-200 transition text-base font-medium"
                       >
                         Volver a productos
-                      </a>
+                      </Link>
                       <button
                         onClick={clearCart}
                         className="inline-flex items-center justify-center rounded-full bg-red-100 px-8 py-3 text-red-700 text-base font-medium"

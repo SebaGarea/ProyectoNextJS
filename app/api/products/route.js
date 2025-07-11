@@ -2,10 +2,7 @@ import { db } from "@/firebase";
 import { collection, getDocs, where, query, doc, getDoc } from "firebase/firestore";
 import { NextResponse } from "next/server";
 
-
-//Route Handlers
 export async function GET(request) {
-
   const searchParams = request.nextUrl.searchParams
   const categoria = searchParams.get("categoria")
   const id = searchParams.get("id")
@@ -13,8 +10,6 @@ export async function GET(request) {
   const productsCollection = collection(db, "products")
 
   try{
-
-    // Si viene un id, buscamos solo ese producto
     if (id) {
       const docRef = doc(db, "products", id);
       const docSnap = await getDoc(docRef);
@@ -34,9 +29,7 @@ export async function GET(request) {
       });
     }
 
-    // Si viene una categoría, filtramos con normalización
     if (categoria) {
-      // Función para normalizar: minúsculas, sin tildes, sin espacios (igual que frontend)
       const normalize = (str) => str
         .toLowerCase()
         .normalize("NFD")
@@ -44,9 +37,6 @@ export async function GET(request) {
         .replace(/[\u0300-\u036f]/g, "")
         .replace(/\s+/g, "");
 
-      console.log('API PRODUCTS - categoria recibida:', categoria);
-
-      // Traemos todos los productos y filtramos en memoria
       const snapshot = await getDocs(productsCollection);
       const productosFinales = snapshot.docs
         .map((documentRef) => {
@@ -58,7 +48,6 @@ export async function GET(request) {
         .filter((producto) => {
           const catProd = producto.category ? normalize(producto.category) : '';
           const catParam = normalize(categoria);
-          console.log('Comparando:', catProd, catParam);
           return catProd === catParam;
         });
 
@@ -69,7 +58,6 @@ export async function GET(request) {
       });
     }
 
-    // Si no hay categoría ni id, traemos todos
     const snapshot = await getDocs(productsCollection);
     const productosFinales = snapshot.docs.map((documentRef) =>{
       const id = documentRef.id;
@@ -77,7 +65,6 @@ export async function GET(request) {
       productoData.id = id;
       return productoData;
     })
-    
     
     return NextResponse.json({
       message: "Productos obtenidos con exito",
@@ -87,22 +74,16 @@ export async function GET(request) {
   }
 
   catch(error){
-    console.log('API PRODUCTS ERROR:', error);
     return NextResponse.json({
       message: "Error al obtener los productos",
       error: true,
       payload: null
     });
   }
-  
-  
 }
 
 export async function POST(req) {
   console.log("POST");
-  //Asi se obtiene el body de la peticion
-  //fetch("url", {body : JSON.stringify({name: "Horacio"})})
   console.log(await req.json());
-
   return NextResponse.json({ message: "POST" });
 }
