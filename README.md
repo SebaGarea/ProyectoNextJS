@@ -1,34 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+<div align="center">
+   <h1>Proyecto Next.js - E-commerce de Muebles</h1>
+  
+   <p>
+      <img src="https://img.shields.io/badge/Next.js-15-blue?logo=nextdotjs" alt="Next.js"/>
+      <img src="https://img.shields.io/badge/React-19-61dafb?logo=react" alt="React"/>
+      <img src="https://img.shields.io/badge/TailwindCSS-4-38bdf8?logo=tailwindcss" alt="Tailwind CSS"/>
+      <img src="https://img.shields.io/badge/Firebase-11-ffca28?logo=firebase" alt="Firebase"/>
+      <img src="https://img.shields.io/badge/License-MIT-green" alt="MIT License"/>
+   </p>
+   <p>
+      <b>Aplicación web de e-commerce moderna, escalable y lista para producción.</b>
+   </p>
+</div>
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Tabla de Contenidos
+- [Descripción](#descripción)
+- [Tecnologías](#tecnologías)
+- [Estructura del Proyecto](#estructura-del-proyecto)
+- [Instalación](#instalación)
+- [Uso](#uso)
+- [Contribuir](#contribuir)
+- [Licencia](#licencia)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Descripción
 
-## Learn More
+Este proyecto es una aplicación web de e-commerce desarrollada con Next.js, orientada a la venta de muebles. Incluye funcionalidades modernas y una arquitectura escalable, ideal para proyectos de aprendizaje, portafolios o como base para tiendas online.
 
-To learn more about Next.js, take a look at the following resources:
+<p align="center">
+   <img src="public/assets/sofa1.jpg" alt="Ejemplo visual" width="400"/>
+</p>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Tecnologías principales
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Next.js 15**: Framework de React para aplicaciones web modernas, con soporte SSR y rutas app.
+- **React 19**: Librería principal para la construcción de interfaces de usuario.
+- **Tailwind CSS**: Utilizado para el diseño responsivo y estilos modernos.
+- **Firebase**: Backend para autenticación, base de datos y almacenamiento de productos.
+- **Lucide React** y **React Icons**: Iconografía moderna y personalizable.
+- **Sass**: Preprocesador CSS para estilos avanzados.
+- **PostCSS**: Procesamiento de CSS moderno.
+- **ESLint**: Linter para mantener la calidad del código.
 
-## Deploy on Vercel
+## Estructura del proyecto
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `/app` - Rutas principales de la aplicación (home, admin, carrito, checkout, favoritos, login, productos, etc.).
+- `/components` - Componentes reutilizables como Header, Footer, ProductList, ProductDetailsClient, etc.
+- `/actions` - Lógica para obtención y migración de productos.
+- `/providers` - Contextos globales como AuthProvider y CartProvider.
+- `/assets` y `/public/assets` - Imágenes y recursos estáticos.
+- `firebase.js` - Configuración de Firebase.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Instalación
+
+1. Clona el repositorio.
+2. Instala las dependencias:
+    ```bash
+    npm install
+    ```
+3. Configura tus credenciales de Firebase en `firebase.js`.
+4. Inicia el servidor de desarrollo:
+    ```bash
+    npm run dev
+    ```
+
+## Uso
+
+- Navega por los productos, agrégalos al carrito y realiza compras.
+- Administra productos desde el panel de administración.
+- Autentícate y gestiona favoritos.
+
+## Contribuir
+
+¿Quieres colaborar? Lee el archivo [CONTRIBUTING.md](CONTRIBUTING.md) para conocer las pautas y el flujo de trabajo recomendado.
+
+## Licencia
+
+Este proyecto está bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más detalles.
+
+---
+
+Proyecto realizado como entrega final para CoderHouse. Puedes personalizarlo y expandirlo según tus necesidades.

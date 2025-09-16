@@ -12,7 +12,6 @@ function ProductList({ productos }) {
   const router = useRouter();
 
   const handleAddToCart = (producto) => {
-    // Por defecto: cantidad 1, color y tamaño nulos (o puedes elegir valores por defecto)
     addToCart(producto, 1, null, null);
     setTimeout(() => {
       router.push("/carrito");
@@ -21,7 +20,7 @@ function ProductList({ productos }) {
 
   return (
     <>
-      {productos.map((producto) => {
+      {(productos || []).map((producto) => {
         return(
         <div
           key={producto.id}

@@ -24,6 +24,18 @@
 .DS_Store
 *.pem
 
+# entorno y editores
+.env*
+.vscode/
+Thumbs.db
+
+# Firebase
+.firebase/
+
+# logs
+logs
+*.log
+
 # debug
 npm-debug.log*
 yarn-debug.log*
